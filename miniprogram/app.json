@@ -1,8 +1,9 @@
 {
   "pages": [
-    "pages/index/index",
-    "pages/todo/todo",
-    "pages/timeTable/timeTable"
+    "pages/timeTable/timeTable",
+    "pages/user/index",
+    "pages/todo/todo"
+    
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
@@ -16,19 +17,19 @@
     "list": [{
       "pagePath": "pages/timeTable/timeTable",
       "text": "课程表",
-      "iconPath": "iconPath",
-      "selectedIconPath": "selectedIconPath"
+      "iconPath": "/assets/image/table.png",
+      "selectedIconPath": "/assets/image/check.png"
     },
     {
       "pagePath": "pages/todo/todo",
       "text": "待办事项",
-      "iconPath": "iconPath",
-      "selectedIconPath": "selectedIconPath"
+      "iconPath": "/assets/image/icon-todo.png",
+      "selectedIconPath": "/assets/image/icon-todo-active.png"
     },{
-      "pagePath": "pages/index/index",
+      "pagePath": "pages/user/index",
       "text": "个人中心",
-      "iconPath": "iconPath",
-      "selectedIconPath": "selectedIconPath"
+      "iconPath": "/assets/image/icon-user.png",
+      "selectedIconPath": "/assets/image/icon-user-active.png"
     }
   ]
   },
