@@ -1,1 +1,50 @@
 /* miniprogram/pages/timeTable/timeTable.wxss */
+.top{
+  display: flex;
+  flex-direction: row;
+  margin-left: 65rpx;
+  background-color: #d9d1fd;
+  color: #4c73df;
+}
+.top-text{
+  width: 140rpx;
+  height: 65rpx;
+  font-size: 9pt;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+}
+.left{
+  width: 65rpx;
+  height: 110rpx;
+  font-size: 9pt;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+}
+
+.flex-item {
+  width: 140rpx;
+  height: 100px;
+}
+
+
+.kcb-item {
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+}
+
+.subjecttext {
+  margin-top:15px;
+  font-size: 15px;
+  color: #fff;
+  line-height: 18px;
+}
+
+.placetext{
+  font-size: 8px;
+  color:#fff;
+  line-height: 13px;
+}
