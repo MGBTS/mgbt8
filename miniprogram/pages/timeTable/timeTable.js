@@ -5,7 +5,13 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    colorArrays: ["#85B8CF", "#90C652", "#D8AA5A", "#FC9F9D", "#0A9A84", "#61BC69", "#12AEF3", "#E29AAD"],
+    wlist: [
+     //上课长度全部默认为两节课
+      { "xqj": 1, "sksj": 1, "skcd":2, "subject": "高等数学" ,"place":"教学楼0218"},
+      { "xqj": 1, "sksj": 7, "skcd": 2, "subject":"大学英语","place":" 教学楼0318"},
+      { "xqj": 5, "sksj": 3, "skcd": 2, "subject": "软件工程","place" :"教学楼0403"},
+    ]
   },
 
   /**
