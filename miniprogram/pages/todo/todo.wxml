@@ -5,8 +5,8 @@
       进行中
     </view>
     <view 
-      wx:for="{{todos}}"
-      wx:key="{{index}}"
+      wx:for="{{ todos }}"
+      wx:key="{{ index }}"
       wx:if="{{!item.completed}}"
       class="todo-list__item ripple fast fadeInRight"
       style="animation-delay:{{delay ? index*0.1 :0 }}s">

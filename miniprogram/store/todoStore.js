@@ -12,25 +12,69 @@ class todoStore extends store{
 
   //初始化
   __init(){
-    let isInited=wx.getStorageSync('__todos_inited__')
-    if(isInited) return
-    this.todos=this.todos.concat([new Todo({
-      title:'欢迎使用todoList',
-      completed:false,
-      level:1,
-      createdAt:new Date()
-    }),
-    new Todo({
-      title:'这是已经完成的任务',
-      completed:true,
-      level:4,
-      date:new Date('2020/05/19'),
-      createdAt:new Date(),
-      completedAt:new Date('2020/05/19')
-    })
-  ])
-  this.save()
-  wx.setStorageSync('__todos_inited__', true)
+    let isInited = wx.getStorageSync('__todos_inited__')
+    if (isInited) return
+    this.todos = this.todos.concat([new Todo({
+      title: '欢迎使用TodoList',
+      completed: false,
+      level: 1,
+      createdAt: new Date()
+    }), new Todo({
+      title: '点击左边勾选框完成一项任务',
+      completed: false,
+      level: 1,
+      createdAt: new Date()
+    }), new Todo({
+      title: '点击标题可以编辑任务哦',
+      completed: false,
+      level: 2,
+      createdAt: new Date()
+    }), new Todo({
+      title: '点击右边日期可修改日期',
+      completed: false,
+      level: 3,
+      createdAt: new Date()
+    }), new Todo({
+      title: '点击下面的 + 新建一项任务吧',
+      completed: false,
+      level: 4,
+      createdAt: new Date()
+    }), new Todo({
+      title: '长按可删除任务',
+      completed: false,
+      level: 4,
+      createdAt: new Date()
+    }), new Todo({
+      title: '这是一条已完成的任务1',
+      completed: true,
+      level: 4,
+      date: new Date('2017/11/18'),
+      createdAt: new Date(),
+      completedAt: new Date('2017/11/18')
+    }), new Todo({
+      title: '这是一条已完成的任务2',
+      completed: true,
+      level: 4,
+      date: new Date('2017/11/19'),
+      createdAt: new Date(),
+      completedAt: new Date('2017/11/19')
+    }), new Todo({
+      title: '这是一条已完成的任务3',
+      completed: true,
+      level: 4,
+      date: new Date('2017/11/20'),
+      createdAt: new Date(),
+      completedAt: new Date('2017/11/20')
+    }), new Todo({
+      title: '这是一条已完成的任务4',
+      completed: true,
+      level: 4,
+      date: new Date('2017/11/20'),
+      createdAt: new Date(),
+      completedAt: new Date('2017/11/20')
+    })])
+    this.save()
+    wx.setStorageSync('__todos_inited__', true)
   }
   //获取todos
   getTodos(){
