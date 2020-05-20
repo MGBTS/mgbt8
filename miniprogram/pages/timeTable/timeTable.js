@@ -5,6 +5,8 @@ Page({
    * 页面的初始数据
    */
   data: {
+    openid: '',
+    timeTable_id: '',
     colorArrays: ["#85B8CF", "#90C652", "#D8AA5A", "#FC9F9D", "#0A9A84", "#61BC69", "#12AEF3", "#E29AAD"],
     wlist: [
       //上课长度全部默认为两节课
@@ -36,6 +38,42 @@ Page({
 
   },
 
+
+
+
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+    var that = this;
+    wx.login({
+      success: function (res) {
+        console.log(res);
+        that.getOpenid();
+      }
+    })
+
+
+  },
+
+  getOpenid() {
+    let that = this;
+    wx.cloud.callFunction({
+      name: 'getOpenid', complete: res => {
+        console.log('云函数获取到的UNIONID: ', res.result.openid)
+        var oid = res.result.openid;
+        var tt_id = "timeTable_id_" + oid;
+        that.setData({
+          openid: oid,
+          timeTable_id: tt_id
+        })
+        console.log(that.data.openid);
+        that.getDataFromDB()
+      }
+    })
+
+  },
   getDataFromDB() {
     // 这里app.music_num是前面计算出来的记录总数
     // 一般是在本界面之前 求出 
@@ -50,6 +88,18 @@ Page({
     //初始化云端环境​
     const db = wx.cloud.database({
       env: 'cloud-en-1-g1a9s'//填写自己的云端环境ID
+    })
+    wx.cloud.callFunction({
+      // 云函数名称
+      name: 'createCollection',
+      // 传给云函数的参数
+      data: {
+        name: that.data.timeTable_id
+      },
+      success: function (res) {
+        console.log(res.result)
+      },
+      fail: console.error
     })
     //定义每次获取的条数​
     const MAX_LIMIT = 20;
@@ -78,9 +128,8 @@ Page({
       [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
     ]
     for (let i = 0; i < batchTimes; i++) {
-      db.collection('timeTable_v0').skip(i * MAX_LIMIT).limit(MAX_LIMIT).get({
+      db.collection(that.data.timeTable_id).skip(i * MAX_LIMIT).limit(MAX_LIMIT).get({
         success: function (res) {
-
           console.log(res.data)
           //二次循环根据​获取的promise数组的数据长度获取全部数据push到arraypro数组中
           for (let j = 0; j < res.data.length; j++) {
@@ -104,23 +153,10 @@ Page({
         }
       })
     }
-    
+
     wx.hideLoading()
 
   },
-
-
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-    this.getDataFromDB()
-
-  },
-
-
-
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

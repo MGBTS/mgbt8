@@ -11,7 +11,9 @@ Page({
     sksj: 0,
     skcd: 0,
     place: "",
-    teacher: ""
+    teacher: "",
+    openid: '',
+    timeTable_id: ''
   },
 
   xqjInput: function (e) {
@@ -47,10 +49,11 @@ Page({
 
   //用于保存修改的数据
   save: function () {
+    var that = this;
     const db = wx.cloud.database({
       env: 'cloud-en-1-g1a9s'//填写自己的云端环境ID
     })
-    db.collection('timeTable_v0').add({
+    db.collection(that.data.timeTable_id).add({
       // data 字段表示需新增的 JSON 数据
       data: {
         // _id: 'todo-identifiant-aleatoire', // 可选自定义 _id，在此处场景下用数据库自动分配的就可以了
@@ -59,8 +62,7 @@ Page({
         skcd: this.data.skcd,
         teacher: this.data.teacher,
         place: this.data.place,
-        subject: this.data.subject,
-        baocunflag: true
+        subject: this.data.subject
       },
       success: function (res) {
         // res 是一个对象，其中有 _id 字段标记刚创建的记录的 id
@@ -83,6 +85,18 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var that = this;
+    wx.cloud.callFunction({
+      name: 'getOpenid', complete: res => {
+        console.log('云函数获取到的UNIONID: ', res.result.openid)
+        var oid = res.result.openid;
+        var tt_id = "timeTable_id_" + oid;
+        that.setData({
+          openid: oid,
+          timeTable_id: tt_id
+        })
+      }
+    })
   },
 
   /**
