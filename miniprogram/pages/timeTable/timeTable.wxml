@@ -31,7 +31,7 @@
 		<!--课表-->
 
 		<view wx:for="{{wlist}}">
-			<button type="primary" class="flex-item kcb-item" bindtap="onTapEditCourse" id='0' data-statu="open" data-index="{{index}}" style="margin-left:{{(item.xqj-1)*140}}rpx;margin-top:{{(item.sksj-1)*100+5}}rpx;height:{{item.skcd*100-5}}rpx;background-color:{{colorArrays[index%8]}}">
+			<button type="primary" class="flex-item kcb-item" bindtap="onTapEditCourse" id='0' data-statu="open" data-index="{{index}}" style="margin-left:{{(item.xqj-1)*141}}rpx;margin-top:{{(item.sksj-1)*100+5}}rpx;height:{{item.skcd*100-5}}rpx;background-color:{{colorArrays[index%8]}}">
 				<!-- xqj代表星期几上课，sksj是上课时间，skcd上课长度，kcxx课程信息-->
 				<view class="subjecttext">{{item.subject}}</view>
 				<view class="placetext">{{item.place}}</view>
@@ -39,9 +39,9 @@
 		</view>
 		<!--空白小空格-->
 		<view wx:for="{{blankArr}}" wx:for-index="xqjm1" wx:for-item="oneDay">
-			<view wx:for="{{[1,2,3,4,5,6,7,8,9,10,11,12]}}" wx:for-index="kssj">
+			<view wx:for="{{[1,2,3,4,5,6,7,8,9,10,11]}}" wx:for-index="kssj">
 				<view wx:if="{{oneDay[kssj]==0}}">
-					<button type="primary" class="flex-item blank-item" bindtap="onTapAddCourse" id='0' data-statu="open" data-index="{{index}}" style="margin-left:{{xqjm1*140}}rpx;margin-top:{{kssj*100+5}}rpx;height:{{1*100-5}}rpx;background-color:#F6F6F6">
+					<button type="primary" class="flex-item blank-item" bindtap="onTapAddCourse" id='0' data-statu="open" data-index="{{index}}" style="margin-left:{{1+xqjm1*141}}rpx;margin-top:{{kssj*100+5}}rpx;height:{{1*100-5}}rpx;background-color:#F6F6F6">
 						<!-- xqj代表星期几上课，sksj是上课时间，skcd上课长度，kcxx课程信息-->
 					</button>
 				</view>

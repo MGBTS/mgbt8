@@ -24,8 +24,8 @@
 }
 .left{
   width: 65rpx;
-  height: 110rpx;
-  font-size: 9pt;
+  height: 100rpx;
+  font-size: 11pt;
   justify-content: center;
   display: flex;
   align-items: center;
