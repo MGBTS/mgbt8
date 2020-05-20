@@ -60,7 +60,7 @@ Page({
   //todo长按事件
   handleTodoLongTap(e){
     let index=e.currentTarget.dataset.index
-    wx.showModel({
+    wx.showModal({
       title:'删除提示',
       content:'确定要删除这项任务吗？',
       success:(e)=>{
