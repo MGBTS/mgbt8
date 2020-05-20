@@ -1,0 +1,5 @@
+/* miniprogram/pages/todo/create.wxss */
+.create-header {
+  padding: 0;
+  border-bottom: 0;
+}
