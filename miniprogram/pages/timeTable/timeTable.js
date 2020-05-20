@@ -29,6 +29,12 @@ Page({
     })
 
   },
+  onTapEditCourse() {
+    wx.navigateTo({
+      url: '/pages/editCourse/editCourse',
+    })
+
+  },
 
   getDataFromDB() {
     // 这里app.music_num是前面计算出来的记录总数
