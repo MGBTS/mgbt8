@@ -1,4 +1,20 @@
 /* pages/addCourse.wxss */
+.itemView{
+    margin-top: 20rpx;
+    margin-left: 20rpx;
+    margin-right: 20rpx;
+    height: 100rpx;
+   
+    justify-content: flex-start;
+    display: flex;
+    align-items: center;
+  }
+  .input{
+  width: 500rpx;
+  height: 100rpx; 
+  border: 1px solid lightgray;
+  border-radius: 50rpx;
+  }
 .top {
     justify-content: center;
     display: flex;
@@ -16,3 +32,5 @@
     display: flex;
     align-items: center;
 }
+
+

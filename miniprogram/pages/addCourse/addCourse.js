@@ -5,78 +5,79 @@ Page({
    * 页面的初始数据
    */
   data: {
-    focus: false,
-    focus2: false,
-    focus3: false,
-    focus4: false,
-    focus5: false,
-    kcmc: "",
-    didian:"",
-    startzhou:"",
-    endzhou:"",
-    kcxx:""
-  },
-  bindButtonTap: function () {
-    this.setData({
-      focus: true
-    })
-  },
-  bindKeyInput: function (e) {
-    this.setData({
-      kcmc: e.detail.value
-    })
 
+    subject: "",
+    xqj: 0,
+    sksj: 0,
+    skcd: 0,
+    place: "",
+    teacher: ""
   },
-  bindButtonTap2: function () {
+
+  xqjInput: function (e) {
     this.setData({
-      focus2: true
+      xqj: e.detail.value
     })
   },
-  bindKeyInput2: function (e) {
+  sksjInput: function (e) {
     this.setData({
-      didian: e.detail.value
+      sksj: e.detail.value
     })
   },
-  bindButtonTap3: function () {
-    this.setData({
-      focus3: true
-    })
-  },
-  bindKeyInput3: function (e) {
+  skcdInput: function (e) {
     this.setData({
       skcd: e.detail.value
     })
   },
-  bindButtonTap4: function () {
+  subjectInput: function (e) {
     this.setData({
-      focus4: true
+      subject: e.detail.value
     })
   },
-  bindKeyInput4: function (e) {
+  teacherInput: function (e) {
     this.setData({
-      startzhou: e.detail.value
+      teacher: e.detail.value
     })
   },
-  bindButtonTap5: function () {
+  placeInput: function (e) {
     this.setData({
-      focus5: true
-    })
-  },
-  bindKeyInput5: function (e) {
-    this.setData({
-      endzhou: e.detail.value
+      place: e.detail.value
     })
   },
 
   //用于保存修改的数据
-  save:function(){
-    wx.setStorageSync('kcxx', this.data.kcmc + "  "+ this.data.didian + "  " + this.data.startzhou + "~" + this.data.endzhou + "周");
-   wx.setStorageSync('skcd', this.data.skcd);
-    console.log( this.data.kcmc + "  " + this.data.didian + "  " + this.data.startzhou +"~"+this.data.endzhou+"周");
-    wx.navigateTo({
-      url: '../subject/subject'
+  save: function () {
+    const db = wx.cloud.database({
+      env: 'cloud-en-1-g1a9s'//填写自己的云端环境ID
     })
+    db.collection('timeTable_v0').add({
+      // data 字段表示需新增的 JSON 数据
+      data: {
+        // _id: 'todo-identifiant-aleatoire', // 可选自定义 _id，在此处场景下用数据库自动分配的就可以了
+        xqj: this.data.xqj,
+        sksj: this.data.sksj,
+        skcd: this.data.skcd,
+        teacher: this.data.teacher,
+        place: this.data.place,
+        subject: this.data.subject,
+        baocunflag: true
+      },
+      success: function (res) {
+        // res 是一个对象，其中有 _id 字段标记刚创建的记录的 id
+        wx.showToast({
+          title: '保存成功',
+          icon: 'success',
+          duration: 1000,
+          mask: true
+        });
+        wx.reLaunch({
+          url: '/pages/timeTable/timeTable',
+        })
+      }
+    })
+
   },
+
 
   /**
    * 生命周期函数--监听页面加载

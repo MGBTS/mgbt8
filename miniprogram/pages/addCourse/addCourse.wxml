@@ -2,41 +2,23 @@
 <view class='top'>
 	<view class='top-text'>添加课程页面</view>
 </view>
-<view class='keming'>
-	<view class='btn' bindtap='bindButtonTap'>课程名称 </view>
-	<view class='btn2'>
-		<input type='text ' bindinput="bindKeyInput" maxlength='10 ' placeholder="点击课程名称按钮输入" focus="{{focus}}" />
-	</view>
+<view class="itemView">课程名：
+	<input class="input" name="subject" placeholder="请输入课程名" bindinput="subjectInput" />
 </view>
-
-<view class='keaddr'>
-	<view class='btn' bindtap="bindButtonTap2">上课地点</view>
-	<view class='btn2'>
-		<input type='text ' bindinput="bindKeyInput2" maxlength='10' placeholder="点击上课地点按钮输入" focus="{{focus2}}" />
-	</view>
+<view class="itemView">周几上课：
+	<input class="input" name="xqj" placeholder="请输入数字" bindinput="xqjInput" />
 </view>
-
-<view class='kelength'>
-	<view class='btn' bindtap="bindButtonTap3">上课节数</view>
-	<view class='btn2'>
-		<input type='number ' bindinput="bindKeyInput3" minlength='1' maxlength='1' placeholder="点击上课时长输入数字" focus="{{focus3}}" />
-	</view>
+<view class="itemView">从第几节：
+	<input class="input" name="sksj" placeholder="请输入数字" bindinput="sksjInput" />
 </view>
-
-<view class='skzhoushu'>上课起止周数</view>
-
-<view class='kezhoushu1'>
-	<view class='btn' bindtap="bindButtonTap4">开始周数</view>
-	<view class='btn2'>
-		<input type='number ' bindinput="bindKeyInput4" minlength='1' maxlength='2' placeholder="点击开始周数输入数字" focus="{{focus4}}" />
-	</view>
+<view class="itemView">上几节课：
+	<input class="input" name="skcd" placeholder="请输入数字" bindinput="skcdInput" />
 </view>
-
-<view class='kezhoushu2'>
-	<view class='btn' bindtap="bindButtonTap5">结束周数</view>
-	<view class='btn2'>
-		<input type='number ' bindinput="bindKeyInput5" minlength='1' maxlength='2' placeholder="点击结束周数输入数字" focus="{{focus5}}" />
-	</view>
+<view class="itemView">教室：
+	<input class="input" name="place" placeholder="请输入教室" bindinput="placeInput" />
+</view>
+<view class="itemView">老师：
+	<input class="input" name="teacher" placeholder="请输入老师名字" bindinput="teacherInput" />
 </view>
 
 <view>
