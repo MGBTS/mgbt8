@@ -4,6 +4,7 @@
 	<image class='background' src="../../assets/image/？.jpg" mode="aspectFill"></image>
 	<!--页面其它部分-->
 </view>
+
 <view class='top'>
 	<view wx:for="{{['一','二','三','四','五']}}" class='top-text'>周{{item}}</view>
 </view>
@@ -21,7 +22,7 @@
 		</view>
 		<view wx:for="{{[1,2,3,4,5,6,7,8,9,10,11]}}">
 
-			<view style="width:750rpx;margin-top:{{(index+1)*100}}rpx;  position: absolute;border-bottom:1rpx solid {{index==3||index==7?'red':'lightgray'}};">
+			<view style="width:750rpx;margin-top:{{(index+1)*100}}rpx;  position: absolute;border-bottom:1rpx solid {{index==3||index==7?'gray':'lightgray'}};">
 
 			</view>
 
