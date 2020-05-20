@@ -1,0 +1,18 @@
+/* pages/addCourse.wxss */
+.top {
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    background-color: #F6F6F6;
+    color: #4c73df;
+}
+
+.top-text {
+    width: 300rpx;
+    height: 65rpx;
+    font-size: 13pt;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+}
