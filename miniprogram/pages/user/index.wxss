@@ -1,63 +1,90 @@
-.bg {
-  height: 150px;
-  background-color: #d53e37;
+/* pages/user/index.wxss */
+.page {
+  background-color: #fff;
 }
 
-.head {
-  display: flex;
-  flex-direction: column;
+.user-card {
+  background-color: #fff;
+  box-shadow: 0 0 15rpx 0 rgba(0, 0, 0, 0.1);
+  position: relative;
+  padding-top: 200rpx;
+  background-size: contain;
+  z-index: 0;
+  margin-bottom: 30rpx;
 }
 
-.headIcon {
-  display: flex;
-  justify-content: center;
-}
-
-.login {
-  display: flex;
-  color: #fff;
-  font-size: 15px;
-  margin-top: 15rpx;
-  justify-content: center;
-}
-
-.button {
-  margin: 10px;
-  font-size: 14px;
-}
-
-.head image {
-  border-radius: 50%;
-}
-
-.hr {
-  width: 100%;
-  height: 15px;
-  background-color: #f4f5f6;
-}
-
-.item {
-  display: flex;
-  flex-direction: row;
-}
-
-.title {
-  padding-top: 15px;
-  padding-bottom: 15px;
-  padding-left: 15px;
-  font-size: 15px;
-}
-
-.detail2 {
-  font-size: 15px;
+.user-card__bg {
   position: absolute;
-  right: 10px;
-  height: 50px;
-  line-height: 50px;
-  color: #888;
+  left: 0;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 268rpx;
+  z-index: -1;
 }
 
-.line {
-  border: 1px solid #ccc;
-  opacity: 0.2;
+.user-card__head {
+  width: 120rpx;
+  height: 120rpx;
+  border: 1px solid #6482DD;
+  border-radius: 50%;
+  margin-left: 7%;
+  margin-right: 30rpx;
+  background-color: #fff;
+}
+
+.user-card__name {
+  color: #6482DD;
+  font-size: 38rpx;
+}
+
+.user-card__links {
+  display: flex;
+  padding: 20rpx 0;
+  border-bottom: 1px solid #ccc;
+}
+
+.user-card__linkItem {
+  flex: 1;
+  font-size: 32rpx;
+  color: #333;
+  text-align: center;
+  border-right: 1px dotted #ccc;
+  padding: 5rpx 0;
+}
+
+.user-card__linkItem:last-child {
+  border-right: none;
+}
+
+.user-card__linkLabel {
+  color: #999;
+}
+
+.user-card__linkValue {
+  padding-left: 15rpx;
+}
+
+.charts-card {
+  margin-bottom: 50rpx;
+}
+
+.charts-card__header {
+  display: block;
+  border-left: 8rpx solid #6482DD;
+  padding: 20rpx;
+  margin-bottom: 20rpx;
+  font-size: 32rpx;
+  color: #666;
+}
+
+.charts-card__body {
+  display: block;
+  width: 100%;
+  height: 370rpx;
+  padding: 20rpx;
+}
+
+.tips {
+  padding: 30rpx;
 }

@@ -1,49 +1,28 @@
-<view class="bg">
-  <view class="head">
-    <view class="headIcon">
-      <image src="{{userInfo.avatarUrl}}" style="width:70px;height:70px;"></image>
+<!--pages/user/index.wxml-->
+<view class="page">
+  <view class="user-card">
+    <image class="user-card__bg" src="../../assets/image/me.png" mode="aspectFill"></image>
+    <view class="user-card__info">
+      <image class="user-card__head" src="{{ userInfo.avatarUrl }}"></image>
+      <text class="user-card__name">{{ userInfo.nickName }}</text>
     </view>
-    <view class="login">
-      {{userInfo.nickName}}
+    <view class="user-card__links">
+      <view class="user-card__linkItem" bindtap="linkToTodos">
+        <label class="user-card__linkLabel">进行中</label>
+        <text class="user-card__linkValue">{{ todosUncompletedCount }}</text>
+      </view>
+      <view class="user-card__linkItem" bindtap="linkToTodos">
+        <label class="user-card__linkLabel">已完成</label>
+        <text class="user-card__linkValue">{{ todosCompletedCount }}</text>
+      </view>
     </view>
   </view>
-  <button class="button" open-type="getUserInfo" wx:if="{{hasUserInfo}}" bindgetuserinfo="doAuthorization"> 微信登录 </button>
-</view>
-
-<view class='item'>
-  <view class="title">阅读文章</view>
-  <view class="detail2">
-    <text>></text>
+  <view class="charts-card">
+    <text class="charts-card__header">任务完成率</text>
+    <canvas class="charts-card__body" canvas-id="chartsA"></canvas>
+  </view>
+  <view class="charts-card">
+    <view class="charts-card__header">每天完成量</view>
+    <canvas class="charts-card__body" canvas-id="chartsB" bindtouchstart="touchHandler" bindtouchmove="moveHandler" bindtouchend="touchEndHandler"></canvas>
   </view>
 </view>
-
-<view class="line"></view>
-<view class='item'>
-  <view class="title">电影推荐</view>
-  <view class="detail2">
-    <text> ></text>
-  </view>
-</view>
-<view class="line"></view>
-<view class="item">
-  <view class="title">我的收藏</view>
-  <view class="detail2">
-    <text> ></text>
-  </view>
-</view>
-<view class="line"></view>
-<view class="item">
-  <view class="title">意见反馈</view>
-  <view class="detail2">
-    <text> ></text>
-  </view>
-</view>
-<view class="line"></view>
-<view class="item">
-  <view class="title">设置</view>
-  <view class="detail2">
-    <text> ></text>
-  </view>
-</view>
-<view class="hr"></view>
-
