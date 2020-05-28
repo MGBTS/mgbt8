@@ -1,1 +1,34 @@
 /* miniprogram/pages/editCourse/editCourse.wxss */
+.itemView{
+  margin-top: 20rpx;
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+  height: 100rpx;
+ 
+  justify-content: flex-start;
+  display: flex;
+  align-items: center;
+}
+.input{
+width: 500rpx;
+height: 100rpx; 
+border: 1px solid lightgray;
+border-radius: 50rpx;
+}
+.top {
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  background-color: #F6F6F6;
+  color: #4c73df;
+}
+
+.top-text {
+  width: 300rpx;
+  height: 65rpx;
+  font-size: 13pt;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+}

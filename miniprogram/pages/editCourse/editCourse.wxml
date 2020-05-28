@@ -1,2 +1,26 @@
 <!--miniprogram/pages/editCourse/editCourse.wxml-->
-<text>miniprogram/pages/editCourse/editCourse.wxml</text>
+<view class='top'>
+	<view class='top-text'>修改课程页面</view>
+</view>
+<view class="itemView">课程名：
+	<input class="input" name="subject" value="{{subject}}" bindinput="subjectInput" />
+</view>
+<view class="itemView">周几上课：
+	<input class="input" name="xqj" value="{{xqj}}" bindinput="xqjInput" />
+</view>
+<view class="itemView">从第几节：
+	<input class="input" name="sksj" value="{{sksj}}" bindinput="sksjInput" />
+</view>
+<view class="itemView">上几节课：
+	<input class="input" name="skcd" value="{{skcd}}" bindinput="skcdInput" />
+</view>
+<view class="itemView">教室：
+	<input class="input" name="place" value="{{place}}" bindinput="placeInput" />
+</view>
+<view class="itemView">老师：
+	<input class="input" name="teacher" value="{{teacher}}" bindinput="teacherInput" />
+</view>
+
+<view>
+	<button bindtap="changeClassInfo" type='submit'>修改</button>
+</view>

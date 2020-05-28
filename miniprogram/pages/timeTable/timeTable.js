@@ -31,9 +31,11 @@ Page({
     })
 
   },
-  onTapEditCourse() {
+  onTapEditCourse(e) {
+    let that = this
+    var curClassIndex = e.currentTarget.dataset.index
     wx.navigateTo({
-      url: '/pages/editCourse/editCourse',
+      url: '/pages/editCourse/editCourse?id='+that.data.wlist[curClassIndex]._id,
     })
 
   },
