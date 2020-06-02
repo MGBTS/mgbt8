@@ -1,4 +1,8 @@
 // pages/addCourse.js
+
+
+
+
 Page({
 
   /**
@@ -10,27 +14,75 @@ Page({
     xqj: 0,
     sksj: 0,
     skcd: 0,
+    sksjend: 0,
     place: "",
     teacher: "",
     openid: '',
-    timeTable_id: ''
+    timeTable_id: '',
+    multiArray: [['周一', '周二', '周三', '周四', '周五'], [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11], [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]],
+    multiIndex: [0, 0, 0],
+  },
+  //点到多选框时候
+  bindMultiPickerChange: function (e) {
+    console.log('picker发送选择改变，携带值为', e.detail.value)
+    //index里面具体值应该就是取第几个？
+    this.setData({
+      multiIndex: e.detail.value
+    })
+  },
+  bindMultiPickerColumnChange: function (e) {
+    console.log('修改的列为', e.detail.column, '，值为', e.detail.value);
+    var data = {
+      multiArray: this.data.multiArray,
+      multiIndex: this.data.multiIndex
+    };
+    data.multiIndex[e.detail.column] = e.detail.value;
+    switch (e.detail.column) {
+      case 1:
+        switch (data.multiIndex[1]) {
+          case 0:
+            data.multiArray[2] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
+            break;
+          case 1:
+            data.multiArray[2] = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
+            break;
+          case 2:
+            data.multiArray[2] = [3, 4, 5, 6, 7, 8, 9, 10, 11];
+            break;
+          case 3:
+            data.multiArray[2] = [4, 5, 6, 7, 8, 9, 10, 11];
+            break;
+          case 4:
+            data.multiArray[2] = [5, 6, 7, 8, 9, 10, 11];
+            break;
+          case 5:
+            data.multiArray[2] = [6, 7, 8, 9, 10, 11];
+            break;
+          case 6:
+            data.multiArray[2] = [7, 8, 9, 10, 11];
+            break;
+          case 7:
+            data.multiArray[2] = [8, 9, 10, 11];
+            break;
+          case 8:
+            data.multiArray[2] = [9, 10, 11];
+            break;
+          case 9:
+            data.multiArray[2] = [10, 11];
+            break;
+          case 10:
+            data.multiArray[2] = [11];
+            break;
+        }
+        data.multiIndex[2] = 0;
+        console.log(data.multiIndex);
+        break;
+    }
+    this.setData(data);
   },
 
-  xqjInput: function (e) {
-    this.setData({
-      xqj: e.detail.value
-    })
-  },
-  sksjInput: function (e) {
-    this.setData({
-      sksj: e.detail.value
-    })
-  },
-  skcdInput: function (e) {
-    this.setData({
-      skcd: e.detail.value
-    })
-  },
+
+
   subjectInput: function (e) {
     this.setData({
       subject: e.detail.value
@@ -57,9 +109,9 @@ Page({
       // data 字段表示需新增的 JSON 数据
       data: {
         // _id: 'todo-identifiant-aleatoire', // 可选自定义 _id，在此处场景下用数据库自动分配的就可以了
-        xqj: this.data.xqj,
-        sksj: this.data.sksj,
-        skcd: this.data.skcd,
+        xqj: this.data.multiIndex[0] + 1,
+        sksj: this.data.multiIndex[1] + 1,
+        skcd: this.data.multiIndex[2] - this.data.multiIndex[1] + 1,
         teacher: this.data.teacher,
         place: this.data.place,
         subject: this.data.subject

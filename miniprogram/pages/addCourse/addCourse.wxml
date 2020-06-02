@@ -1,26 +1,39 @@
 <!--pages/addCourse.wxml-->
 <view class='top'>
-	<view class='top-text'>添加课程页面</view>
+	<view class='top-text'>添加课程</view>
 </view>
-<view class="itemView">课程名：
-	<input class="input" name="subject" placeholder="请输入课程名" bindinput="subjectInput" />
+<view class="divLine0"></view>
+<view class="form-item bottom-line">
+	<text>课程名称：</text>
+	<view>
+		<input class="weui-input" name="subject" placeholder="请输入课程名" bindinput="subjectInput" />
+	</view>
 </view>
-<view class="itemView">周几上课：
-	<input class="input" name="xqj" placeholder="请输入数字" bindinput="xqjInput" />
+<view class="divLine0"></view>
+<view class="form-item bottom-line">
+	<text>教室地点：</text>
+	<view>
+		<input class="weui-input" name="place" placeholder="请输入教室" bindinput="placeInput" />
+	</view>
 </view>
-<view class="itemView">从第几节：
-	<input class="input" name="sksj" placeholder="请输入数字" bindinput="sksjInput" />
+<view class="divLine"></view>
+<view class="section">
+	<picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
+		<view class="picker form-item bottom-line">
+			<text>上课节数：</text>
+			{{multiArray[0][multiIndex[0]]}} {{multiArray[1][multiIndex[1]]}}-{{multiArray[2][multiIndex[2]]}}节
+		</view>
+	</picker>
 </view>
-<view class="itemView">上几节课：
-	<input class="input" name="skcd" placeholder="请输入数字" bindinput="skcdInput" />
-</view>
-<view class="itemView">教室：
-	<input class="input" name="place" placeholder="请输入教室" bindinput="placeInput" />
-</view>
-<view class="itemView">老师：
-	<input class="input" name="teacher" placeholder="请输入老师名字" bindinput="teacherInput" />
-</view>
+<view class="divLine"></view>
 
-<view>
-	<button bindtap="save" type='submit'>保存</button>
+<view class="form-item bottom-line">
+	<text>老师姓名：</text>
+	<view>
+		<input class="weui-input" name="teacher" placeholder="请输入老师名字" placeholder-style="" bindinput="teacherInput" />
+	</view>
+</view>
+<view class="divLine"></view>
+<view class="weui-btn-area">
+	<button class="weui-btn" type="primary" bindtap="save">保存</button>
 </view>
