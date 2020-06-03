@@ -138,6 +138,21 @@ Page({
 
   },
 
+  deleteClassInfo: function(){
+    var that = this
+    const db = wx.cloud.database({
+      env: 'cloud-en-1-g1a9s'//填写自己的云端环境ID
+    })
+    db.collection(that.data.timeTable_id).doc(that.data.curClassId).remove({
+      success: function(res){
+        wx.reLaunch({
+          url: '/pages/timeTable/timeTable',
+        })
+      }
+    })
+
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */

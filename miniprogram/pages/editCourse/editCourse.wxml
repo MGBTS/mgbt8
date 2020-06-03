@@ -34,7 +34,8 @@
 </view>
 <view class="divLine"></view>
 <view class="weui-btn-area">
-	<button class="weui-btn" type="primary" bindtap="changeClassInfo">修改</button>
+		<button class="weui-btn" type="primary" bindtap="changeClassInfo">修改</button>
+		<button class="weui-btn" type="warn" bindtap="deleteClassInfo">删除</button>
 </view>
 
 
