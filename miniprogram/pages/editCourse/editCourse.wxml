@@ -2,25 +2,46 @@
 <view class='top'>
 	<view class='top-text'>修改课程页面</view>
 </view>
-<view class="itemView">课程名：
-	<input class="input" name="subject" value="{{subject}}" bindinput="subjectInput" />
+<view class="divLine0"></view>
+<view class="form-item bottom-line">
+	<text>课程名称：</text>
+	<view>
+		<input class="weui-input" name="subject" value="{{subject}}"  bindinput="subjectInput" />
+	</view>
 </view>
-<view class="itemView">周几上课：
-	<input class="input" name="xqj" value="{{xqj}}" bindinput="xqjInput" />
+<view class="divLine0"></view>
+<view class="form-item bottom-line">
+	<text>教室地点：</text>
+	<view>
+		<input class="weui-input" name="place" value="{{place}}" bindinput="placeInput" />
+	</view>
 </view>
-<view class="itemView">从第几节：
-	<input class="input" name="sksj" value="{{sksj}}" bindinput="sksjInput" />
+<view class="divLine"></view>
+<view class="section">
+	<picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
+		<view class="picker form-item bottom-line">
+			<text>上课节数：</text>
+			{{multiArray[0][multiIndex[0]]}} {{multiArray[1][multiIndex[1]]}}-{{multiArray[2][multiIndex[2]]}}节
+		</view>
+	</picker>
 </view>
-<view class="itemView">上几节课：
-	<input class="input" name="skcd" value="{{skcd}}" bindinput="skcdInput" />
+<view class="divLine"></view>
+<view class="form-item bottom-line">
+	<text>老师姓名：</text>
+	<view>
+		<input class="weui-input" name="teacher" value="{{teacher}}" placeholder-style="" bindinput="teacherInput" />
+	</view>
 </view>
-<view class="itemView">教室：
-	<input class="input" name="place" value="{{place}}" bindinput="placeInput" />
-</view>
-<view class="itemView">老师：
-	<input class="input" name="teacher" value="{{teacher}}" bindinput="teacherInput" />
+<view class="divLine"></view>
+<view class="weui-btn-area">
+	<button class="weui-btn" type="primary" bindtap="changeClassInfo">修改</button>
 </view>
 
-<view>
-	<button bindtap="changeClassInfo" type='submit'>修改</button>
-</view>
+
+
+
+
+
+
+
+

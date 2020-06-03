@@ -11,10 +11,70 @@ Page({
     xqj: Number,
     sksj: Number,
     skcd: Number,
+    sksjend: Number,
     place: "",
     teacher: "",
     openid: '',
-    timeTable_id: ''
+    timeTable_id: '',
+    multiArray: [['周一', '周二', '周三', '周四', '周五'], [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11], [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]],
+    multiIndex: [0, 0, 0],
+  },
+  bindMultiPickerChange: function (e) {
+    console.log('picker发送选择改变，携带值为', e.detail.value)
+    //index里面具体值应该就是取第几个？
+    this.setData({
+      multiIndex: e.detail.value
+    })
+  },
+  bindMultiPickerColumnChange: function (e) {
+    console.log('修改的列为', e.detail.column, '，值为', e.detail.value);
+    var data = {
+      multiArray: this.data.multiArray,
+      multiIndex: this.data.multiIndex
+    };
+    data.multiIndex[e.detail.column] = e.detail.value;
+    switch (e.detail.column) {
+      case 1:
+        switch (data.multiIndex[1]) {
+          case 0:
+            data.multiArray[2] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
+            break;
+          case 1:
+            data.multiArray[2] = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
+            break;
+          case 2:
+            data.multiArray[2] = [3, 4, 5, 6, 7, 8, 9, 10, 11];
+            break;
+          case 3:
+            data.multiArray[2] = [4, 5, 6, 7, 8, 9, 10, 11];
+            break;
+          case 4:
+            data.multiArray[2] = [5, 6, 7, 8, 9, 10, 11];
+            break;
+          case 5:
+            data.multiArray[2] = [6, 7, 8, 9, 10, 11];
+            break;
+          case 6:
+            data.multiArray[2] = [7, 8, 9, 10, 11];
+            break;
+          case 7:
+            data.multiArray[2] = [8, 9, 10, 11];
+            break;
+          case 8:
+            data.multiArray[2] = [9, 10, 11];
+            break;
+          case 9:
+            data.multiArray[2] = [10, 11];
+            break;
+          case 10:
+            data.multiArray[2] = [11];
+            break;
+        }
+        data.multiIndex[2] = 0;
+        console.log(data.multiIndex);
+        break;
+    }
+    this.setData(data);
   },
   xqjInput: function (e) {
     this.setData({
@@ -53,9 +113,12 @@ Page({
     })
     db.collection(that.data.timeTable_id).doc(that.data.curClassId).update({
       data:{
-        xqj: this.data.xqj,
-        sksj: this.data.sksj,
-        skcd: this.data.skcd,
+        //xqj: this.data.xqj,
+        //sksj: this.data.sksj,
+        //skcd: this.data.skcd,
+        xqj: this.data.multiIndex[0] + 1,
+        sksj: this.data.multiIndex[1] + 1,
+        skcd: this.data.multiIndex[2] + 1,
         teacher: this.data.teacher,
         place: this.data.place,
         subject: this.data.subject,
@@ -97,7 +160,6 @@ Page({
     })
   },
 
-  //提交表单，更新数据库
   getTargetClassInfo : function(){
     var that = this
     const db = wx.cloud.database({
@@ -105,8 +167,6 @@ Page({
     })
     db.collection(that.data.timeTable_id).doc(that.data.curClassId).get({
       success: function(res){
-        //console.log("跳转后从数据库中获取的数据：")
-        //console.log(res.data)
         that.setData({
           place:res.data.place,
           skcd:res.data.skcd,
@@ -115,6 +175,53 @@ Page({
           teacher:res.data.teacher,
           xqj:res.data.xqj,
         })
+        that.setData({
+          multiIndex: [that.data.xqj-1, that.data.sksj-1, Number(that.data.skcd) -1 ]
+        })
+        switch(that.data.multiIndex[1]){
+          case 0:
+            that.setData({
+              multiArray: [that.data.multiArray[0], that.data.multiArray[1], [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]]
+            });
+            break;
+          case 1:
+            that.data.multiArray[2] = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
+            break;
+          case 2:
+            that.setData({
+              multiArray: [that.data.multiArray[0], that.data.multiArray[1], [3, 4, 5, 6, 7, 8, 9, 10, 11]]
+            });
+            break;
+          case 3:
+            that.setData({
+              multiArray: [that.data.multiArray[0], that.data.multiArray[1], [4, 5, 6, 7, 8, 9, 10, 11]]
+            });
+            console.log(that.multiArray)
+            break;
+          case 4:
+            that.data.multiArray[2] = [5, 6, 7, 8, 9, 10, 11];
+            break;
+          case 5:
+            that.data.multiArray[2] = [6, 7, 8, 9, 10, 11];
+            break;
+          case 6:
+            that.data.multiArray[2] = [7, 8, 9, 10, 11];
+            break;
+          case 7:
+            that.data.multiArray[2] = [8, 9, 10, 11];
+            break;
+          case 8:
+            that.data.multiArray[2] = [9, 10, 11];
+            break;
+          case 9:
+            that.data.multiArray[2] = [10, 11];
+            break;
+          case 10:
+            that.data.multiArray[2] = [11];
+            break;
+        }
+        console.log("所有数据")
+        console.log(that.data)
       }
     })
   },

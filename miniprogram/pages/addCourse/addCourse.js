@@ -111,7 +111,7 @@ Page({
         // _id: 'todo-identifiant-aleatoire', // 可选自定义 _id，在此处场景下用数据库自动分配的就可以了
         xqj: this.data.multiIndex[0] + 1,
         sksj: this.data.multiIndex[1] + 1,
-        skcd: this.data.multiIndex[2] - this.data.multiIndex[1] + 1,
+        skcd: this.data.multiIndex[2] + 1,
         teacher: this.data.teacher,
         place: this.data.place,
         subject: this.data.subject
