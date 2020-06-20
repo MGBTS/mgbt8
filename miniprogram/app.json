@@ -3,10 +3,8 @@
     "pages/timeTable/timeTable",
     "pages/user/index",
     "pages/todo/todo",
-
     "pages/addCourse/addCourse",
     "pages/editCourse/editCourse",
-
     "pages/todo/create"
 
   ],
@@ -40,5 +38,4 @@
     ]
   },
   "sitemapLocation": "sitemap.json"
-
 }
