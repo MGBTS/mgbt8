@@ -1,5 +1,7 @@
 //app.js
-import storeManager from './store/storeManager.js'
+import storeManager from './store/storeManager'
+
+
 App({
   onLaunch: function () {
     
@@ -15,8 +17,12 @@ App({
         traceUser: true,
       })
     }
+
 // 读取数据
 storeManager.read()
+
+
+
 
 // 获取用户信息
 wx.getUserInfo({

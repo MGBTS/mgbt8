@@ -12,12 +12,26 @@ Page({
     todos:[],
     uncompletedCount:0,
     completedCount:0,
-    dalay:true
+    dalay:true,
+    uuid:0,
 
   },
-
-
-
+  //监听页面加载
+  onLoad:function(options){
+      var that=this;
+      wx.cloud.callFunction({
+        name:'getOpenid',complete:res=>{
+          console.log('云函数获取到的UNIONID: ', res.result.openid)
+          var uid = "uuid_"+res.result.openid;
+          console.log(uid)
+          this.setData({
+            uuid: uid
+          })
+        }
+      })
+      console.log("uuid"+this.data.uuid)
+      
+  },
   /**
    * 生命周期函数--监听页面显示
    */
@@ -32,7 +46,6 @@ Page({
    */
   onHide: function () {
     this.sycnData()
-
   },
 
   /**
@@ -41,15 +54,17 @@ Page({
   onShareAppMessage: function (options) {
 
   },
+
   sycnData(){
     this.data.todos=todoStore.getTodos()
+    console.log(this.data.todos)
     this.update()//更新置顶标题
     let uncompletedCount=todoStore.getUncompletedTodos().length
     let todayCompletedCount=todoStore.getTodayCompletedTodos().length
     let title=['TodoList(进行中:',uncompletedCount,',今日已完成：',todayCompletedCount,')'].join('')
 
-    wx.setTopBarText({
-      text: title}) //设定顶部bar显示
+    wx.setTopBarText({text: title}) //设定顶部bar显示
+    console.log("执行sycnData")
     
       //动画结束后取消动画队列延迟
       setTimeout(()=>{
@@ -72,6 +87,7 @@ Page({
     })
 
   },
+  //todo数据改变事件
   handleTodoItemChange(e){
     let index=e.currentTarget.dataset.index
     let todo=e.detail.data.todo
@@ -86,6 +102,7 @@ Page({
     data.completedCount=todoStore.getCompletedTodos().length
     data.uncompletedCount=todoStore.getUncompletedTodos().length
     this.setData(data)
+  
   },
 
   //增加todo事项
@@ -93,7 +110,9 @@ Page({
     wx.navigateTo({
       url: '../todo/create'
     })
-  }
+  },
+
+
 
 
 })
