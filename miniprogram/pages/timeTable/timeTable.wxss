@@ -16,7 +16,7 @@
 }
 .top-text{
   width: 140rpx;
-  height: 65rpx;
+  height: 85rpx;
   font-size: 9pt;
   justify-content: center;
   display: flex;
