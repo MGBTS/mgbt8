@@ -200,7 +200,9 @@ Page({
             });
             break;
           case 1:
-            that.data.multiArray[2] = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
+            that.setData({
+              multiArray: [that.data.multiArray[0], that.data.multiArray[1], [2, 3, 4, 5, 6, 7, 8, 9, 10, 11]]
+            });
             break;
           case 2:
             that.setData({
@@ -211,28 +213,41 @@ Page({
             that.setData({
               multiArray: [that.data.multiArray[0], that.data.multiArray[1], [4, 5, 6, 7, 8, 9, 10, 11]]
             });
-            console.log(that.multiArray)
             break;
           case 4:
-            that.data.multiArray[2] = [5, 6, 7, 8, 9, 10, 11];
+            that.setData({
+              multiArray: [that.data.multiArray[0], that.data.multiArray[1], [5, 6, 7, 8, 9, 10, 11]]
+            });
             break;
           case 5:
-            that.data.multiArray[2] = [6, 7, 8, 9, 10, 11];
+            that.setData({
+              multiArray: [that.data.multiArray[0], that.data.multiArray[1], [6, 7, 8, 9, 10, 11]]
+            });
             break;
           case 6:
-            that.data.multiArray[2] = [7, 8, 9, 10, 11];
+            that.setData({
+              multiArray: [that.data.multiArray[0], that.data.multiArray[1], [7, 8, 9, 10, 11]]
+            });
             break;
           case 7:
-            that.data.multiArray[2] = [8, 9, 10, 11];
+            that.setData({
+              multiArray: [that.data.multiArray[0], that.data.multiArray[1], [8, 9, 10, 11]]
+            });
             break;
           case 8:
-            that.data.multiArray[2] = [9, 10, 11];
+            that.setData({
+              multiArray: [that.data.multiArray[0], that.data.multiArray[1], [9, 10, 11]]
+            });
             break;
           case 9:
-            that.data.multiArray[2] = [10, 11];
+            that.setData({
+              multiArray: [that.data.multiArray[0], that.data.multiArray[1], [10, 11]]
+            });
             break;
           case 10:
-            that.data.multiArray[2] = [11];
+            that.setData({
+              multiArray: [that.data.multiArray[0], that.data.multiArray[1], [11]]
+            });
             break;
         }
         console.log("所有数据")
